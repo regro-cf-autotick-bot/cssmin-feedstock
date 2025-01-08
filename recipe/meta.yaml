@@ -11,7 +11,7 @@ source:
 
 build:
   noarch: python
-  script: python setup.py install  --single-version-externally-managed --record=record.txt
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 1
   entry_points:
     - cssmin = cssmin:main
@@ -20,6 +20,7 @@ requirements:
   host:
     - python {{ python_min }}
     - setuptools
+    - pip
   run:
     - python >={{ python_min }}
 
